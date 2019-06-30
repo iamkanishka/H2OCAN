@@ -1,0 +1,206 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false" fxShow.lg="false"
+    style="background-color: white">
+    <mat-toolbar style="color: royalblue"><span style="font-size: 125%">H2OCAN</span></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/orders" routerLinkActive="active" style="color:black;font-size: 115%">Order
+        Details</a>
+      <a mat-list-item href="" style="color:black;font-size: 115%">Details List</a>
+      <a mat-list-item routerLink="/sales" routerLinkActive="active" style="color:black;font-size: 115%">Sales
+        Details</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: white;font-size: 200%;">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="auto" fxLayoutGap="15px">
+
+        <span style="color:royalblue">H2OCAN</span>
+        <a mat-button routerLink="/orders" routerLinkActive="active" style="color: black;font-size: 60%"
+          fxShow.xs="false">Order Details</a>
+        <button mat-button [matMenuTriggerFor]="menu" style="color: black;font-size: 60%" fxShow.xs="false">Details
+          List</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/membership" routerLinkActive="active">Memeberships </button>
+          <button mat-menu-item routerLink="/workers" routerLinkActive="active">Workers</button>
+
+
+        </mat-menu>
+        <a mat-button routerLink="/sales" routerLinkActive="active" style="color: black;font-size: 60%"
+          fxShow.xs="false">Sales Details</a>
+
+      </div>
+    </mat-toolbar>
+
+
+    <div id="nana" class="container" fxLayout.lg="row" fxLayout.xs="column" fxLayoutGap.xs="10px" fxLayoutGap="10px">
+      <mat-card style="background-color:rgb(35, 21, 240)" fxFlex="25" fxFlex.xs="100">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center start">
+          <mat-card-title>
+            <p class="mat-display-1" style="color: white;font-family: sans-serif">Total Orders</p>
+          </mat-card-title>
+          <mat-card-subtitle fxLayout="row" fxLayoutAlign="center start" class="mat-h6"
+            style="color: white;font-size: 100px">{{(ordersobs|async)?.totord}}</mat-card-subtitle>
+        </mat-card-header>
+
+      </mat-card>
+
+      <mat-card style="background-color:green" fxFlex="25" fxFlex.xs="100">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center start">
+          <mat-card-title>
+            <p class="mat-display-1" style="color: white;font-family: sans-serif">Delivered Orders</p>
+          </mat-card-title>
+          <mat-card-subtitle fxLayout="row" fxLayoutAlign="center start" class="mat-h6"
+            style="color: white;font-size: 100px">{{(ordersobs|async)?.delord}}</mat-card-subtitle>
+        </mat-card-header>
+
+      </mat-card>
+
+
+
+
+      <mat-card style="background-color:red" fxFlex="25" fxFlex.xs="100">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center start">
+          <mat-card-title>
+            <p class="mat-display-1" style="color: white;font-family: sans-serif">Undeliverd Orders</p>
+          </mat-card-title>
+          <mat-card-subtitle fxLayout="row" fxLayoutAlign="center start" class="mat-h6"
+            style="color: white;font-size: 100px">{{(ordersobs|async)?.undelord}}</mat-card-subtitle>
+        </mat-card-header>
+
+      </mat-card>
+
+      <mat-card style="background-color: black" fxFlex="25" fxFlex.xs="100">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center start">
+          <mat-card-title>
+            <p class="mat-display-1" style="color: white;font-family: sans-serif">Available Stocks</p>
+          </mat-card-title>
+          <mat-card-subtitle fxLayout="row" fxLayoutAlign="center start" class="mat-h6"
+            style="color: white;font-size: 90px">{{(ordersobs|async)?.avlblcans}}</mat-card-subtitle>
+        </mat-card-header>
+
+      </mat-card>
+    </div>
+
+
+    <div id="nana" class="container" fxLayout.lg="row"   fxLayoutGap="10px"
+      fxShow.xs="false">
+
+      <div id="nani" fxFlex="50">
+        <h1 fxLayout="row" fxLayoutAlign="start start" class="mat-h1" style="font-size: 60px">Order Bits</h1>
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" style="
+          overflow-y: auto;
+          height: 365px;">
+          <mat-tab label="Orderd">
+            <div fxLayout="column" fxLayoutGap="10px" style="background-color: white">
+              <mat-card style="border :0.4px solid black">
+                <mat-card-header>
+                  <mat-card-title fxLayout="row" fxLayoutGap="400px">
+                    <h1 class="mat-h1">Order no: 1</h1>
+                    <h1 class="mat-h1">Payment:300</h1>
+                  </mat-card-title>
+                  <mat-card-title fxLayout="row" fxLayoutGap="260px">
+                    <h1 class="mat-h1">Name: Kanishka</h1>
+                    <h1 class="mat-h1">Ph Num:8951900164</h1>
+
+                  </mat-card-title>
+
+                </mat-card-header>
+              </mat-card>
+
+              <mat-card fxLayoutGap="50px" style="border :0.4px solid black">
+                <mat-card-header>
+                  <mat-card-title fxLayout="row" fxLayoutGap="400px">
+                    <h1 class="mat-h1">Order no: 2</h1>
+                    <h1 class="mat-h1">Payment:450</h1>
+                  </mat-card-title>
+                  <mat-card-title fxLayout="row" fxLayoutGap="260px">
+                    <h1 class="mat-h1">Name: Priyanka</h1>
+                    <h1 class="mat-h1">Ph Num:8762241062</h1>
+
+                  </mat-card-title>
+                </mat-card-header>
+
+              </mat-card>
+              <mat-card fxLayoutGap="50px" style="border :0.4px solid black">
+                <mat-card-header>
+                  <mat-card-title fxLayout="row" fxLayoutGap="400px">
+                    <h1 class="mat-h1">Order no: 3</h1>
+                    <h1 class="mat-h1">Payment:450</h1>
+                  </mat-card-title>
+                  <mat-card-title fxLayout="row" fxLayoutGap="230px">
+                    <h1 class="mat-h1">Name: Priyankanb</h1>
+                    <h1 class="mat-h1">Ph Num:8762241062</h1>
+                  </mat-card-title>
+                </mat-card-header>
+              </mat-card>
+            </div>
+          </mat-tab>
+          <mat-tab label="Delivered">
+
+
+
+          </mat-tab>
+          <mat-tab label="Undeliverd">
+            <mat-card></mat-card>
+
+          </mat-tab>
+
+
+
+        </mat-tab-group>
+
+      </div>
+      <mat-card fxFlex="50" style="background-color:white">
+        <h1 fxLayout="row" fxLayoutAlign="start start" class="mat-h1" style="font-size: 60px">Take Order</h1>
+        <div fxLayout="row" fxLayoutGap="30px" >
+          <button mat-button [matMenuTriggerFor]="menu" style="color: royalblue">500ml</button>
+          <mat-menu #menu="matMenu">
+            <form style="padding: 0px">
+              <mat-form-field  fxFlex="100" >
+                <input matInput placeholder="quant">
+              </mat-form-field>
+            </form>
+          </mat-menu>
+        </div>
+        <div style="padding-top: 50px"></div>
+        <form fxLayout="row" fxLayoutGap="30px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="No of Cans">
+          </mat-form-field>
+        </form>
+        <form fxLayout="row">
+          <mat-form-field fxFlex="100">
+            <textarea matInput placeholder="Address"></textarea>
+          </mat-form-field>
+
+        </form>
+        <form fxLayout="row" fxLayoutGap="30px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Phone Number">
+          </mat-form-field>
+
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Lanndmark">
+          </mat-form-field>
+        </form>
+
+
+        
+
+
+      </mat-card>
+    </div>
+
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
