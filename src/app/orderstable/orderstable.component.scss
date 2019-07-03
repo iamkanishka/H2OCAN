@@ -1,0 +1,18 @@
+.example-container {
+    height: 450px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  
+  ::ng-deep .mat-primary .mat-pseudo-checkbox-checked {
+    background: rgb(17, 0, 255);
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

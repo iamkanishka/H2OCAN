@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
+     date:string;
+  
   constructor() { }
 
   ngOnInit() {
+  this.date="31/07/1997";
   }
 
 }
