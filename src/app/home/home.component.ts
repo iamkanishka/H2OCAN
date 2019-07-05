@@ -25,7 +25,8 @@ export class HomeComponent {
   ordersobs: Observable<orders>;
    
 showchip:boolean=true;
-
+showform:boolean=false;
+quant:number=20;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -43,7 +44,7 @@ showchip:boolean=true;
  
 displayf(quant:string){
 this.showchip=false;
-
+this.showform=true;
 }
 
 }
