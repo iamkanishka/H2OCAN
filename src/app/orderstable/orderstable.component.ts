@@ -53,7 +53,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 2, name: 'github', weight: 4.0026, symbol: 'Ondelivery'},
   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'delivered'},
   {position: 4, name: 'github', weight: 9.0122, symbol: 'Ondelivery'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'Ordered'},
+  {position: 5, name: 'github', weight: 10.811, symbol: 'Ordered'},
   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'Ondelivery'},
   {position: 7, name: 'github', weight: 14.0067, symbol: 'Undelivered'},
   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'Ordered'},
