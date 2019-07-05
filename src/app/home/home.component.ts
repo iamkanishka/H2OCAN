@@ -24,6 +24,9 @@ export class HomeComponent {
   ordersdetails : AngularFirestoreDocument<orders>;
   ordersobs: Observable<orders>;
    
+showchip:boolean=true;
+
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -37,5 +40,10 @@ export class HomeComponent {
     this.ordersdetails=this.afs.doc<orders>('ordersdet/ordersdetails');
    this.ordersobs=this.ordersdetails.valueChanges();
   }
+ 
+displayf(quant:string){
+this.showchip=false;
+
+}
 
 }

@@ -28,7 +28,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/membership" routerLinkActive="active">Memeberships </button>
           <button mat-menu-item routerLink="/workers" routerLinkActive="active">Workers</button>
-       </mat-menu>
+        </mat-menu>
         <a mat-button routerLink="/sales" routerLinkActive="active" style="color: black;font-size: 60%"
           fxShow.xs="false">Sales Details</a>
 
@@ -86,8 +86,7 @@
     </div>
 
 
-    <div id="nana" class="container" fxLayout.lg="row"   fxLayoutGap="20px"
-      fxShow.xs="false">
+    <div id="nana" class="container" fxLayout.lg="row" fxLayoutGap="20px" fxShow.xs="false">
 
       <div id="nani" fxFlex="50">
         <h1 fxLayout="row" fxLayoutAlign="start start" class="mat-h1" style="font-size: 60px">Order Bits</h1>
@@ -97,46 +96,43 @@
           <mat-tab label="Orderd">
             <div fxLayout="column" fxLayoutGap="10px" style="background-color: white">
               <mat-card style="border :0.4px solid black">
-                <mat-card-header>
-                  <mat-card-title fxLayout="row" fxLayoutGap="400px">
+                <mat-card-title fxLayout="row" fxLayoutAlign="space-between start">
+                  <div fxLayout="column" fxLayoutAlign="start start">
                     <h1 class="mat-h1">Order no: 1</h1>
-                    <h1 class="mat-h1">Payment:300</h1>
-                  </mat-card-title>
-                  <mat-card-title fxLayout="row" fxLayoutGap="250px">
-                    <h1 class="mat-h1">Name: Kanishka</h1>
-                    <h1 class="mat-h1">Ph Num:8951900164</h1>
-
-                  </mat-card-title>
-
-                </mat-card-header>
+                    <h1 class="mat-h1">Name: Kanishka Naik</h1>
+                  </div>
+                  <div fxLayout="column" fxLayoutAlign="start end">
+                    <h1 class="mat-h1">Payment: 100000</h1>
+                    <h1 class="mat-h1">Ph Num: 9907858787</h1>
+                  </div>
+                </mat-card-title>
               </mat-card>
+              <mat-card style="border :0.4px solid black">
+                  <mat-card-title fxLayout="row" fxLayoutAlign="space-between start">
+                    <div fxLayout="column" fxLayoutAlign="start start">
+                      <h1 class="mat-h1">Order no: 2</h1>
+                      <h1 class="mat-h1">Name: Priyanka B C</h1>
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="start end">
+                      <h1 class="mat-h1">Payment: 100000</h1>
+                      <h1 class="mat-h1">Ph Num: 8762241062</h1>
+                    </div>
+                  </mat-card-title>
+                </mat-card>
+                <mat-card style="border :0.4px solid black">
+                    <mat-card-title fxLayout="row" fxLayoutAlign="space-between start">
+                      <div fxLayout="column" fxLayoutAlign="start start">
+                        <h1 class="mat-h1">Order no: 3</h1>
+                        <h1 class="mat-h1">Name: Channama Chidambar Naik</h1>
+                      </div>
+                      <div fxLayout="column" fxLayoutAlign="start end">
+                        <h1 class="mat-h1">Payment: 100000</h1>
+                        <h1 class="mat-h1">Ph Num: 8951900164</h1>
+                      </div>
+                    </mat-card-title>
+                  </mat-card>
 
-              <mat-card fxLayoutGap="50px" style="border :0.4px solid black">
-                <mat-card-header>
-                  <mat-card-title fxLayout="row" fxLayoutGap="400px">
-                    <h1 class="mat-h1">Order no: 2</h1>
-                    <h1 class="mat-h1">Payment:450</h1>
-                  </mat-card-title>
-                  <mat-card-title fxLayout="row" fxLayoutGap="260px">
-                    <h1 class="mat-h1">Name: Priyanka</h1>
-                    <h1 class="mat-h1">Ph Num:8762241062</h1>
 
-                  </mat-card-title>
-                </mat-card-header>
-
-              </mat-card>
-              <mat-card fxLayoutGap="50px" style="border :0.4px solid black">
-                <mat-card-header>
-                  <mat-card-title fxLayout="row" fxLayoutGap="400px">
-                    <h1 class="mat-h1">Order no: 3</h1>
-                    <h1 class="mat-h1">Payment:450</h1>
-                  </mat-card-title>
-                  <mat-card-title fxLayout="row" fxLayoutGap="230px">
-                    <h1 class="mat-h1">Name: Priyankanb</h1>
-                    <h1 class="mat-h1">Ph Num:8762241062</h1>
-                  </mat-card-title>
-                </mat-card-header>
-              </mat-card>
             </div>
           </mat-tab>
           <mat-tab label="Delivered">
@@ -156,16 +152,27 @@
       </div>
       <mat-card fxFlex="50" style="background-color:white">
         <h1 fxLayout="row" fxLayoutAlign="start start" class="mat-h1" style="font-size: 60px">Take Order</h1>
-       
+        <div style="padding-top: 20px"></div>
+        <div class="container">
+        <mat-chip-list aria-label="Order selection" *ngIf=showchip>
 
-        <div style="padding-top: 50px"></div>
+          <mat-chip style="background-color:blue;font-size:25px;font-family: lato"  (click)="displayf('250ml')" selected>250ml</mat-chip>
+          <mat-chip style="background-color:blue;font-size:25px;font-family: lato" selected>500ml</mat-chip>
+          <mat-chip style="background-color:blue;font-size:25px;font-family: lato" selected>1ltr</mat-chip>
+          <mat-chip style="background-color:blue;font-size:25px;font-family: lato" selected>25ltr</mat-chip>
+          
+        </mat-chip-list>
+        
+      </div>
+
+        <div style="padding-top: 40px"></div>
         <form fxLayout="row" fxLayoutGap="30px">
           <mat-form-field fxFlex="50">
-            <input matInput placeholder="Name">
+            <input matInput placeholder="Name" ngModule="name">
           </mat-form-field>
 
           <mat-form-field fxFlex="50">
-            <input matInput placeholder="No of Cans">
+            <input matInput placeholder="Phone Number">
           </mat-form-field>
         </form>
         <form fxLayout="row">
@@ -176,16 +183,16 @@
         </form>
         <form fxLayout="row" fxLayoutGap="30px">
           <mat-form-field fxFlex="50">
-            <input matInput placeholder="Phone Number">
+            <input matInput placeholder="Lanndmark">
           </mat-form-field>
 
           <mat-form-field fxFlex="50">
-            <input matInput placeholder="Lanndmark">
+            <input matInput placeholder="Pincode">
           </mat-form-field>
         </form>
 
 
-        
+
 
 
       </mat-card>

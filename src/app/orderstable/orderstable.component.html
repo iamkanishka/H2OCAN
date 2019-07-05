@@ -1,6 +1,6 @@
 <mat-card style="background-color:white">
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+<mat-form-field fxFlex="40">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
 </mat-form-field>
 </mat-card>
 
@@ -11,6 +11,7 @@
         <mat-checkbox (change)="$event ? masterToggle() : null"
                       [checked]="selection.hasValue() && isAllSelected()"
                       [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [color]=""
                       [aria-label]="checkboxLabel()">
         </mat-checkbox>
       </th>

@@ -25,6 +25,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { SalesComponent } from './sales/sales.component';
 import { WorkersComponent } from './workers/workers.component';
 import { OrderstableComponent } from './orderstable/orderstable.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -39,8 +40,9 @@ import { environment } from 'src/environments/environment';
     OrdersComponent,
     SalesComponent,
     WorkersComponent,
-    OrderstableComponent
-
+    OrderstableComponent,
+    
+    
   ],
 
   imports: [
@@ -58,8 +60,10 @@ import { environment } from 'src/environments/environment';
     FlexLayoutModule,
     MatCardModule,
     MatTabsModule,
+    MatChipsModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    FormsModule,
     MatCheckboxModule,
     //firebase 
 
