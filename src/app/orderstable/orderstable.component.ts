@@ -50,11 +50,11 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'delivered'},
-  {position: 2, name: 'github', weight: 4.0026, symbol: 'Ondelivery'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'delivered'},
-  {position: 4, name: 'github', weight: 9.0122, symbol: 'Ondelivery'},
-  {position: 5, name: 'github', weight: 10.811, symbol: 'Ordered'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'Ondelivery'},
+  {position: 2, name: 'angular', weight: 4.0026, symbol: 'Ondelivery'},
+  {position: 3, name: 'react', weight: 6.941, symbol: 'delivered'},
+  {position: 4, name: 'vue', weight: 9.0122, symbol: 'Ondelivery'},
+  {position: 5, name: 'javascript', weight: 10.811, symbol: 'Ordered'},
+  {position: 6, name: 'firebase', weight: 12.0107, symbol: 'Ondelivery'},
   {position: 7, name: 'github', weight: 14.0067, symbol: 'Undelivered'},
   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'Ordered'},
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'delivered'},
