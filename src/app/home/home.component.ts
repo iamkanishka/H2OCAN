@@ -3,16 +3,15 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 interface orders{
-  totord:number;
-  avlblcans:number;
-  delord:number;
-  undelord:number;
-  
+  totord: number;
+  avlblcans: number;
+  delord: number;
+  undelord: number;
   }
-  
+
 
 @Component({
   selector: 'app-home',
