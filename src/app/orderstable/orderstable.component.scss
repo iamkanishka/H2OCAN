@@ -8,9 +8,10 @@
   }
   
   
-  ::ng-deep .mat-primary .mat-pseudo-checkbox-checked {
-    background: rgb(17, 0, 255);
+  .app-orderstable ::ng-deep .mat-checkbox .mat-accent  .mat-checkbox-checked  {
+    color: rgb(17, 0, 255);
 }
+
 
 .mat-form-field {
     font-size: 14px;

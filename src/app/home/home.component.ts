@@ -27,6 +27,7 @@ showchip:boolean=true;
 showform:boolean=false;
 quant:number=20;
 
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -44,6 +45,10 @@ quant:number=20;
 displayf(quant:string){
 this.showchip=false;
 this.showform=true;
+}
+
+displayc(){
+
 }
 
 }
