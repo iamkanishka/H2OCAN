@@ -25,8 +25,9 @@ export class HomeComponent {
    
 showchip:boolean=true;
 showform:boolean=false;
-quant:number=20;
-
+quant:number;
+quantp:string;
+quantb:string="250ml";
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -42,13 +43,17 @@ quant:number=20;
    this.ordersobs=this.ordersdetails.valueChanges();
   }
  
-displayf(quant:string){
+displayform(quant:string){
 this.showchip=false;
 this.showform=true;
+this.quantp=quant;
 }
 
-displayc(){
+displayc(qun:number){
+this.showchip=true;
+this.showform=false;
 
+this.quantb=`${this.quantp}(${qun})`;
 }
 
 }
