@@ -25,9 +25,15 @@ export class HomeComponent {
    
 showchip:boolean=true;
 showform:boolean=false;
-quant:number;
+
 quantp:string;
-quantb:string="250ml";
+quant250:string="250ml";
+quant500:string="500ml";
+quant1ltr:string="1ltr";
+quant2ltr:string="2ltr";
+quant25ltr:string="25ltr";
+
+
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -49,11 +55,33 @@ this.showform=true;
 this.quantp=quant;
 }
 
-displayc(qun:number){
+displayc(qun:number,){
 this.showchip=true;
 this.showform=false;
 
-this.quantb=`${this.quantp}(${qun})`;
+switch (this.quantp){
+  case "250ml": {this.quant250=`${this.quantp}(${qun})`;
+        break;}
+  case "500ml" :{this.quant500=`${this.quantp}(${qun})`;
+          break;}
+
+  case "1ltr" :{this.quant1ltr=`${this.quantp}(${qun})`;
+  break;}
+  case "2ltr" :{this.quant2ltr=`${this.quantp}(${qun})`;
+    break;}
+  case "25ltr" :{this.quant25ltr=`${this.quantp}(${qun})`;
+  break;}
+
+}
+
+}
+
+clearme(){
+  this.quant250="250ml";
+  this.quant500="500ml";
+  this.quant1ltr="1ltr";
+  this.quant2ltr="2ltr";
+  this.quant25ltr="25lr";
 }
 
 }

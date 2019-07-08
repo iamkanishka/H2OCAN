@@ -92,7 +92,7 @@
         <h1 fxLayout="row" fxLayoutAlign="start start" class="mat-h1" style="font-size: 60px">Order Bits</h1>
         <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" style="
           overflow-y: auto;
-          height: 365px;border: 1px solid black">
+          height: 365px;border: 1.5px solid black">
           <mat-tab label="Orderd" style="color: white">
             <div fxLayout="column" fxLayoutGap="6px" style="background-color: white">
               <mat-card style="border :1.5px solid royalblue">
@@ -150,35 +150,39 @@
         </mat-tab-group>
 
       </div>
-      <mat-card fxFlex="50" style="background-color:white;border :1.5px solid black">
+      <div id="nani" fxFlex="50">
         <h1 fxLayout="row" fxLayoutAlign="start start" class="mat-h1" style="font-size: 60px">Take Order</h1>
-        <div style="padding-top: 20px"></div>
+      <mat-card style="background-color:white;border :1.5px solid black">
+        
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+        <mat-chip-list aria-label="Order selection" *ngIf=showchip fxLayout="column" fxLayoutAlign="start start">
 
-        <mat-chip-list aria-label="Order selection" *ngIf=showchip>
-
-          <mat-chip style="background-color:rgb(11, 68, 238);font-size:25px;font-family: lato"
-            (click)="displayform('250ml')" selected>{{quantb}}</mat-chip>
-          <mat-chip style="background-color:rgb(11, 68, 238);font-size:25px;font-family: lato"
-            (click)="displayform('250ml')" selected>500ml</mat-chip>
-          <mat-chip style="background-color:rgb(11, 68, 238);font-size:25px;font-family: lato"
-            (click)="displayform('250ml')" selected>1ltr</mat-chip>
-          <mat-chip style="background-color:rgb(11, 68, 238);font-size:25px;font-family: lato"
-            (click)="displayform('250ml')" selected>2ltr</mat-chip>
-          <mat-chip style="background-color:rgb(11, 68, 238);font-size:25px;font-family: lato"
-            (click)="displayform('250ml')" selected>25ltr</mat-chip>
+          <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+            (click)="displayform('250ml')" selected>{{quant250}}</mat-chip>
+          <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+            (click)="displayform('500ml')" selected>{{quant500}}</mat-chip>
+          <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+            (click)="displayform('1ltr')" selected>{{quant1ltr}}</mat-chip>
+          <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+            (click)="displayform('2ltr')" selected>{{quant2ltr}}</mat-chip>
+          <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+            (click)="displayform('25ltr')" selected>{{quant25ltr}}</mat-chip>
 
         </mat-chip-list>
+        <button mat-raised-button style="color:white;background-color: black" fxLayout="column" fxLayoutAlign="start end" *ngIf=showchip
+            (click)=clearme()>Clear</button>
+      </div>
         <div fxLayout="row" fxLayoutGap="10px" *ngIf=showform>
 
           <mat-form-field fxFlex="50">
             <input #qbuuu matInput placeholder="Quantity for {{quantp}}">
           </mat-form-field>
           <button mat-raised-button style="color:white;background-color: blue"
-            (click)=displayc(qbuuu.value)>Add</button>
+            (click)=displayc(qbuuu.value,quantp)>Add</button>
         </div>
 
 
-        <div style="padding: 5px"></div>
+        <div style="margin: 45px"></div>
         <form fxLayout="row" fxLayoutGap="30px">
           <mat-form-field fxFlex="50">
             <input matInput placeholder="Name" ngModule="name">
@@ -203,13 +207,16 @@
             <input matInput placeholder="Pincode">
           </mat-form-field>
         </form>
-
-
-
+      <div fxLayout="column" fxLayoutAlign="start end">
+      <button mat-raised-button  style="background-color:black;color: white" >Order</button>
+    </div>
 
 
       </mat-card>
     </div>
+    
+    </div>
+    
 
     <!-- Add Content Here -->
   </mat-sidenav-content>
