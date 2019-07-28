@@ -30,6 +30,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -41,7 +42,6 @@ import { environment } from 'src/environments/environment';
     SalesComponent,
     WorkersComponent,
     OrderstableComponent,
-    
     
   ],
 
@@ -63,6 +63,7 @@ import { environment } from 'src/environments/environment';
     MatChipsModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    ReactiveFormsModule,
     FormsModule,
     MatCheckboxModule,
     //firebase 

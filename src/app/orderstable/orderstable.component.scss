@@ -8,7 +8,7 @@
   }
   
   
-  .app-orderstable ::ng-deep .mat-checkbox .mat-accent  .mat-checkbox-checked  {
+ :host ::ng-deep .mat-checkbox .mat-accent  .mat-checkbox-checked  {
     color: rgb(17, 0, 255);
 }
 
