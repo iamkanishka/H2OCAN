@@ -75,8 +75,8 @@ npform: FormGroup;
       ]],
     phone: ['', [
         Validators.required,
-        // Validators.maxLength(10),
-        // Validators.minLength(10),
+        Validators.maxLength(10),
+        Validators.minLength(10),
 ]]
     });
     this.addform = this.fb.group({
@@ -91,8 +91,8 @@ npform: FormGroup;
       ]],
       pincode: ['', [
         Validators.required,
-        // Validators.maxLength(6),
-        // Validators.minLength(6),
+        Validators.maxLength(6),
+        Validators.minLength(6),
 ]],});
 }
 

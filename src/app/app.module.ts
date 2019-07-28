@@ -32,7 +32,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import {ReactiveFormsModule} from '@angular/forms';
 
-
+import * as firebase from 'firebase';
 @NgModule({
   declarations: [
     AppComponent,
