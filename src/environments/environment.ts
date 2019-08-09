@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
    firebaseConfig : {
-    apiKey: "AIzaSyAKjZjiWRbL6V_8C0IIu-hBgKKnlZaJjZM",
-    authDomain: "h2ocan-1b99f.firebaseapp.com",
-    databaseURL: "https://h2ocan-1b99f.firebaseio.com",
-    projectId: "h2ocan-1b99f",
-    storageBucket: "h2ocan-1b99f.appspot.com",
-    messagingSenderId: "682452970171",
-    appId: "1:682452970171:web:e6221b9a50978400"
+    apiKey: "AIzaSyCxVeCanDGHWDgk4KRVIOyhGOcBpmXEyf0",
+    authDomain: "h2ocan-805ad.firebaseapp.com",
+    databaseURL: "https://h2ocan-805ad.firebaseio.com",
+    projectId: "h2ocan-805ad",
+    storageBucket: "",
+    messagingSenderId: "194607508932",
+    appId: "1:194607508932:web:3bc2cce703226a43"
    }
 };
 

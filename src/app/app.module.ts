@@ -29,7 +29,7 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({

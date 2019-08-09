@@ -99,7 +99,7 @@ export class HomeComponent {
     });
   }
 
-  async okclick({ value }) {
+  async okclick() {
 const npvalue = this.npform.value;
     const addvalue = this.addform.value;
     const lpvalue = this.lpform.value;

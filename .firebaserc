@@ -1,7 +1,6 @@
 {
   "projects": {
-    "host": "h2ocan",
-    "default": "h2ocan",
-    "kani": "sample-a877d"
+    "h20can": "h2ocan-805ad",
+    "default": "h2ocan-805ad"
   }
 }
