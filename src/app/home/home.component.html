@@ -51,7 +51,7 @@
       <mat-card style="background-color:limegreen" fxFlex="25" fxFlex.xs="100">
         <mat-card-header fxLayout="row" fxLayoutAlign="center start">
           <mat-card-title>
-            <p class="mat-display-1" style="color: white;font-family: sans-serif">Circle CI</p>
+            <p class="mat-display-1" style="color: white;font-family: sans-serif">Delivered Orders</p>
           </mat-card-title>
           <mat-card-subtitle fxLayout="row" fxLayoutAlign="center start" class="mat-h6"
             style="color: white;font-size: 100px">0<!--{{(ordersobs|async)?.delord}}--></mat-card-subtitle>
@@ -139,7 +139,7 @@
         <div fxLayout="row" fxLayoutAlign="space-between start">
         <mat-chip-list aria-label="Order selection" *ngIf=showchip fxLayout="column" fxLayoutAlign="start start">
 
-          <mat-chip style="background-color:greenyellow;font-size:22px;font-family: lato"
+          <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
             (click)="displayform('250ml')" selected>{{quant250}}</mat-chip>
           <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
             (click)="displayform('500ml')" selected>{{quant500}}</mat-chip>
