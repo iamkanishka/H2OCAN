@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "h2ocan-805ad"
+    "h2ocan": "h2ocan-805ad",
   }
 }
