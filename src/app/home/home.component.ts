@@ -5,7 +5,7 @@ import { map, count } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 
 
 interface orderscount {
@@ -45,7 +45,7 @@ export class HomeComponent {
   q1: number;
   q2: number;
   q25: number;
-npform: FormGroup;
+  npform: FormGroup;
   addform: FormGroup;
   lpform: FormGroup;
 
@@ -61,23 +61,24 @@ npform: FormGroup;
   private orderitemscollection: AngularFirestoreCollection<ordersitems>;
   orderitemobs: Observable<ordersitems[]>;
   constructor(private breakpointObserver: BreakpointObserver, public afs: AngularFirestore, private fb: FormBuilder) { }
-   ngOnInit(): void {
+  ngOnInit(): void {
 
     this.ordersdetails = this.afs.doc<orderscount>('orderscounter/orderscount');
     this.ordersobs = this.ordersdetails.valueChanges();
-   this.orderitemscollection = this.afs.collection<ordersitems>('orderitems');
+    this.orderitemscollection = this.afs.collection<ordersitems>('orderitems');
     this.orderitemobs = this.orderitemscollection.valueChanges();
 
     this.npform = this.fb.group({
-    name: ['', [
+      
+      name: ['', [
         Validators.required,
         Validators.maxLength(30),
       ]],
-    phone: ['', [
+      phone: ['', [
         Validators.required,
         Validators.maxLength(10),
         Validators.minLength(10),
-]]
+      ]]
     });
     this.addform = this.fb.group({
       address: ['', [
@@ -93,57 +94,49 @@ npform: FormGroup;
         Validators.required,
         Validators.maxLength(6),
         Validators.minLength(6),
-]],});
-}
+      ]],
+    
+    });
+  }
 
-async okclick({value}) {
-
- 
-    const npvalue = this.npform.value;
+  async okclick({ value }) {
+const npvalue = this.npform.value;
     const addvalue = this.addform.value;
     const lpvalue = this.lpform.value;
     const orderdet = { ...npvalue, ...addvalue, ...lpvalue };
     const increment = firebase.firestore.FieldValue.increment(1);
-    
-    // const batch=this.afs.firestore.batch();
-    var senddata=this.afs.firestore.collection("orderitems").doc(`${Math.random()}`);
-    var sendcc=this.afs.firestore.collection('orderscounter').doc('orderscount');
+ var senddata = this.afs.firestore.collection("orderitems").doc(`${Math.random()}`);
+    var sendcc = this.afs.firestore.collection('orderscounter').doc('orderscount');
     const totcount = this.afs.firestore.collection("orderscounter").doc("orderscount");
- try {
-        
-  await this.afs.firestore.runTransaction(transaction =>
-      transaction.get(totcount).then(totdoc => {
-  
-       // console.log(totdoc.data().totord);
-          const newono:number = totdoc.data().totord + 1;
-          var paym:number=351;
-        //  console.log('before initalizing');
-        //   console.log(npvalue);
-        //    console.log('After initalizing');
-         // console.log(npvalue);
-          // console.log(newono);
-        
-const data:any[]=[];
-          // this.lpform.get('pay').setValue(paym);
-          data['ordno']=newono;
-         data['pay']=paym;
+    try {
 
-          transaction.set(senddata,{...orderdet,...data});
-          transaction.set(sendcc,{totord:increment},{merge:true})
-          
-          // } else {
-          //     return Promise.reject("Sorry! Population is too big.");
-          // }
-           }))
-      .catch(err => console.error(err)); 
+      await firebase.firestore().runTransaction(transaction =>
+        transaction.get(totcount).then(totdoc => {
 
-     } catch (err) {
+          // console.log(totdoc.data().totord);
+          const newono: number = totdoc.data().totord + 1;
+          var paym: number = 351;
+         const data: any[] = [];
+         const ordcat:any[]=[];
+         ordcat['250ml']=15;
+         ordcat['250ml']=30;
+          data['ordlist']=ordcat;
+          data['ordno'] = newono;
+          data['pay'] = paym;
+          this.npform.value.ordno=newono;
+          transaction.set(senddata, { ...orderdet, ...data });
+          transaction.set(sendcc, { totord: increment }, { merge: true })
+
+        }))
+        .catch(err => console.error(err));
+
+    } catch (err) {
       console.error(err)
     }
     this.npform.reset();
     this.addform.reset();
     this.lpform.reset();
-    
+
   }
 
   displayform(quant: string) {

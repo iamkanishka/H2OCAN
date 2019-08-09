@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatSidenavModule, MatListModule, MatTableModule, MatSortModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { MembeshipsComponent } from './membeships/membeships.component';
@@ -32,7 +32,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import {ReactiveFormsModule} from '@angular/forms';
 
-import * as firebase from 'firebase';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +70,7 @@ import * as firebase from 'firebase';
     AngularFirestoreModule.enablePersistence(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatTableModule,
-    MatPaginatorModule,
+   
     MatSortModule,
 
   ],

@@ -2,6 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 
 import {MatTableDataSource} from '@angular/material/table';
+import {  Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+
+
+export interface ordersitems {
+
+  pay?: number;
+  ordno?: number;
+  name?: string;
+  phone?: number;
+  address?: string;
+  landmark?: string;
+  pincode?: number
+}
 
 @Component({
   selector: 'app-orderstable',
@@ -9,13 +24,37 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./orderstable.component.scss']
 })
 export class OrderstableComponent implements OnInit {
-  displayedColumns = ['select','position', 'name', 'weight', 'symbol'];
-  selection = new SelectionModel<PeriodicElement>(true, []);
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  constructor() { }
+  displayedColumns = ['select','ordno','name', 'phone', 'address', 'landmark','pincode','pay'];
+  selection = new SelectionModel<ordersitems>(true, []);
+  dataSource = new MatTableDataSource();
+
+  private detailcollection:AngularFirestoreCollection<ordersitems>;
+  details:Observable<ordersitems[]>;
+
+  constructor( private afs :AngularFirestore) {
+    this.detailcollection=afs.collection<ordersitems>('orderitems');
+        this.details = this.detailcollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as ordersitems;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+      }
+  
+
+ 
+
 
   ngOnInit() {
+    this.getalldetails();
+  
   }
+
+
+ getalldetails(){
+ this.details.subscribe(res=>{this.dataSource.data=res});
+ } 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -30,33 +69,14 @@ export class OrderstableComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: ordersitems): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.ordno + 1}`;
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'delivered'},
-  {position: 2, name: 'angular', weight: 4.0026, symbol: 'Ondelivery'},
-  {position: 3, name: 'react', weight: 6.941, symbol: 'delivered'},
-  {position: 4, name: 'vue', weight: 9.0122, symbol: 'Ondelivery'},
-  {position: 5, name: 'javascript', weight: 10.811, symbol: 'Ordered'},
-  {position: 6, name: 'firebase', weight: 12.0107, symbol: 'Ondelivery'},
-  {position: 7, name: 'github', weight: 14.0067, symbol: 'Undelivered'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'Ordered'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'delivered'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'delivered'},
-];
