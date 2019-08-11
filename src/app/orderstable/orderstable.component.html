@@ -1,12 +1,24 @@
-<mat-card style="background-color:white;border :1px solid royalblue" fxLayout="row" fxLayoutAlign="space-between start"  >
+<mat-card style="background-color:white;border :1px solid royalblue" fxLayout="row" fxLayoutAlign="space-between "  >
 
-  <mat-form-field  fxFlex="40">
+  <mat-form-field  fxFlex="35">
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search order">
 </mat-form-field>
 
+<div fxLayout="column" fxLayoutAlign="end start">
+<mat-chip-list aria-label="Order selection"  fxLayout="column" fxLayoutAlign="start start">
+
+  <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+     selected>Ordered</mat-chip>
+  <mat-chip style="background-color:rgb(11, 68, 238);font-size:22px;font-family: lato"
+     selected>Undelivered</mat-chip>
+    
+  </mat-chip-list>
+
+</div>
+
 <div fxLayout="column" fxLayoutAlign="start end">
   <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=prodel() *ngIf=showpro>Process for Delivery</button>
-  <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=procancel() *ngIf=showcancel ><mat-icon style="color: black">cancel</mat-icon>&nbsp;Cancel</button>
+  <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=procancel() *ngIf=showcancel ><mat-icon style="color: black">cancel</mat-icon>&nbsp;Cancel Process</button>
 
 </div>
 </mat-card>
