@@ -1,25 +1,32 @@
-<mat-card style="background-color:white;border :0.5px solid royalblue ">
-<mat-form-field fxFlex="40">
+<mat-card style="background-color:white;border :1px solid royalblue" fxLayout="row" fxLayoutAlign="space-between start"  >
+
+  <mat-form-field  fxFlex="40">
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search order">
 </mat-form-field>
+
+<div fxLayout="column" fxLayoutAlign="start end">
+  <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=prodel() *ngIf=showpro>Process for Delivery</button>
+  <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=procancel() *ngIf=showcancel ><mat-icon style="color: black">cancel</mat-icon>&nbsp;Cancel</button>
+
+</div>
 </mat-card>
 
 <div class="example-container mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
+    <ng-container matColumnDef="select" >
+      <th mat-header-cell *matHeaderCellDef >
         <mat-checkbox (change)="$event ? masterToggle() : null"
                       [checked]="selection.hasValue() && isAllSelected()"
                       [indeterminate]="selection.hasValue() && !isAllSelected()"
                       [color]=""
-                      [aria-label]="checkboxLabel()">
+                      [aria-label]="checkboxLabel()" *ngIf=showselect>
         </mat-checkbox>
       </th>
       <td mat-cell *matCellDef="let row">
         <mat-checkbox (click)="$event.stopPropagation()"
                       (change)="$event ? selection.toggle(row) : null"
                       [checked]="selection.isSelected(row)"
-                      [aria-label]="checkboxLabel(row)">
+                      [aria-label]="checkboxLabel(row)" *ngIf=showselect>
         </mat-checkbox>
       </td>
     </ng-container>

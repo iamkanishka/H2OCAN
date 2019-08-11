@@ -146,6 +146,12 @@ const npvalue = this.npform.value;
     this.showm = false;
     this.showmm = true;
   }
+  cancel(){
+    this.showchip = true;
+    this.showform = false;
+    this.showm = true;
+    this.showmm = false;
+  }
 
   displayc(qun: number) {
     this.showchip = true;

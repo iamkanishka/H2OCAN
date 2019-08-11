@@ -6,7 +6,7 @@ import {  Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 
-
+ 
 export interface ordersitems {
 
   pay?: number;
@@ -27,6 +27,11 @@ export class OrderstableComponent implements OnInit {
   displayedColumns = ['select','ordno','name', 'phone', 'address', 'landmark','pincode','pay'];
   selection = new SelectionModel<ordersitems>(true, []);
   dataSource = new MatTableDataSource();
+
+
+    showselect:boolean=false;
+    showpro:boolean=true;
+     showcancel:boolean=false;
 
   private detailcollection:AngularFirestoreCollection<ordersitems>;
   details:Observable<ordersitems[]>;
@@ -50,6 +55,20 @@ export class OrderstableComponent implements OnInit {
     this.getalldetails();
   
   }
+
+
+
+prodel(){
+this.showselect=true;
+this.showpro=false;
+this.showcancel=true;
+}
+
+procancel(){
+  this.showselect=false;
+  this.showpro=true;
+  this.showcancel=false;
+}
 
 
  getalldetails(){
