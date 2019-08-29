@@ -40,16 +40,27 @@ export class HomeComponent {
   quant1ltr: string = "1ltr";
   quant2ltr: string = "2ltr";
   quant25ltr: string = "25ltr";
-  q250: number;
-  q500: number;
-  q1: number;
-  q2: number;
-  q25: number;
+  q250: number=0;
+  q500: number=0;
+  q1: number=0;
+  q2: number=0;
+  q25: number=0;
+  q250w: number=0;
+  q500w: number=0;
+  q1w: number=0;
+  q2w: number=0;
+  q25w: number=0;
   npform: FormGroup;
   addform: FormGroup;
   lpform: FormGroup;
-
+  q250p: number=5;
+  q500p: number=10;
+  q1p: number=20;
+  q2p: number=30;
+  q25p: number=40;
   orderdet: any[] = [];
+  waste:number;
+  ordcat:any[]=[];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -99,45 +110,7 @@ export class HomeComponent {
     });
   }
 
-  async okclick() {
-const npvalue = this.npform.value;
-    const addvalue = this.addform.value;
-    const lpvalue = this.lpform.value;
-    const orderdet = { ...npvalue, ...addvalue, ...lpvalue };
-    const increment = firebase.firestore.FieldValue.increment(1);
- var senddata = this.afs.firestore.collection("orderitems").doc(`${Math.random()}`);
-    var sendcc = this.afs.firestore.collection('orderscounter').doc('orderscount');
-    const totcount = this.afs.firestore.collection("orderscounter").doc("orderscount");
-    try {
-
-      await firebase.firestore().runTransaction(transaction =>
-        transaction.get(totcount).then(totdoc => {
-
-          // console.log(totdoc.data().totord);
-          const newono: number = totdoc.data().totord + 1;
-          var paym: number = 351;
-         const data: any[] = [];
-         const ordcat:any[]=[];
-         ordcat['250ml']=15;
-         ordcat['250ml']=30;
-          data['ordlist']=ordcat;
-          data['ordno'] = newono;
-          data['pay'] = paym;
-          this.npform.value.ordno=newono;
-          transaction.set(senddata, { ...orderdet, ...data });
-          transaction.set(sendcc, { totord: increment }, { merge: true })
-
-        }))
-        .catch(err => console.error(err));
-
-    } catch (err) {
-      console.error(err)
-    }
-    this.npform.reset();
-    this.addform.reset();
-    this.lpform.reset();
-
-  }
+ 
 
   displayform(quant: string) {
     this.showchip = false;
@@ -162,33 +135,81 @@ const npvalue = this.npform.value;
     switch (this.quantp) {
       case "250ml": {
         this.quant250 = `${this.quantp}(${qun})`;
-        this.q250 = qun;
+       
+       const value=this.calc(this.quantp,qun);       
+        this.q250 = value[0];
+        this.q250w=value[1];
+         this.ordcat['250ml']=qun;
+ 
         break;
       }
       case "500ml": {
         this.quant500 = `${this.quantp}(${qun})`;
-        this.q500 = qun;
+        const value=this.calc(this.quantp,qun);       
+        this.q500 = value[0];
+        this.q500w=value[1];
+        this.ordcat['500ml']=qun;
+
         break;
       }
 
       case "1ltr": {
         this.quant1ltr = `${this.quantp}(${qun})`;
-        this.q1 = qun;
+        const value=this.calc(this.quantp,qun);       
+        this.q1 = value[0];
+        this.q1w=value[1];
+        this.ordcat['1ltr']=qun;
+
         break;
       }
       case "2ltr": {
         this.quant2ltr = `${this.quantp}(${qun})`;
-        this.q2 = qun;
+        const value=this.calc(this.quantp,qun);       
+        this.q2 = value[0];
+        this.q2w=value[1];
+        this.ordcat['2ltr']=qun;
+
         break;
       }
       case "25ltr": {
         this.quant25ltr = `${this.quantp}(${qun})`;
-        this.q25 = qun;
+        const value=this.calc(this.quantp,qun);       
+        this.q25 = value[0];
+        this.q25w=value[1];
+        this.ordcat['25ltr']=qun;
+
         break;
       }
 
     }
 
+  }
+
+  calc(quantity,pqun):any{
+    switch(quantity){
+      case "250ml" :{
+       const  price= pqun*this.q250p*0.97;
+       const w=pqun*0.03;
+       return [ price,w ];
+      }
+      case "500ml" :{
+        const  price= pqun*this.q500p*0.95;
+        const w=pqun*0.05;
+        return [ price,w ];
+       }case "1ltr" :{
+        const  price= pqun*this.q1p*0.90;
+        const w=pqun*0.1;
+        return [ price,w ];
+       }case "2ltr" :{
+        const  price= pqun*this.q2p*0.85;
+        const w=pqun*0.15;
+        return [ price,w ];
+       }case "25ltr" :{
+        const  price= pqun*this.q25p*0.80;
+        const w=pqun*0.20;
+        return [ price,w ];
+       }
+    }
   }
 
   clearme() {
@@ -204,6 +225,43 @@ const npvalue = this.npform.value;
     this.q500 = null;
 
   }
+
+
+  async okclick() {
+    const npvalue = this.npform.value;
+        const addvalue = this.addform.value;
+        const lpvalue = this.lpform.value;
+        const orderdet = { ...npvalue, ...addvalue, ...lpvalue };
+        const increment = firebase.firestore.FieldValue.increment(1);
+     var senddata = this.afs.firestore.collection("orderitems").doc(`${Math.random()}`);
+        var sendcc = this.afs.firestore.collection('orderscounter').doc('orderscount');
+        const totcount = this.afs.firestore.collection("orderscounter").doc("orderscount");
+        try {
+    
+          await firebase.firestore().runTransaction(transaction =>
+            transaction.get(totcount).then(totdoc => {
+    
+              // console.log(totdoc.data().totord);
+              const newono: number = totdoc.data().totord + 1;
+              var paym: number = this.q1+this.q2+this.q25+this.q250+this.q500;
+             const data: any[] = [];
+              data['ordno'] = newono;
+              data['pay'] = paym;
+              this.npform.value.ordno=newono;
+              transaction.set(senddata, { ...orderdet, ...data,...this.ordcat });
+              transaction.set(sendcc, { totord: increment }, { merge: true })
+              this.clearme()
+            }))
+            .catch(err => console.error(err));
+    
+        } catch (err) {
+          console.error(err)
+        }
+        this.npform.reset();
+        this.addform.reset();
+        this.lpform.reset();
+    
+      }
   // get name(){
   //   return this.npform.get('name');
   // }

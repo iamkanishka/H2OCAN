@@ -154,16 +154,16 @@
         <button mat-raised-button style="color:white;background-color: black" fxLayout="column" fxLayoutAlign="start end" *ngIf=showchip
             (click)=clearme()>Clear</button>
       </div>
-        <div fxLayout="row" fxLayoutGap="10px" *ngIf=showform>
+        <form fxLayout="row" fxLayoutGap="10px" *ngIf=showform>
 
           <mat-form-field fxFlex="50">
             <input #qbuuu matInput placeholder="Quantity for {{quantp}}">
           </mat-form-field>
-          <button mat-raised-button style="color:white;background-color: rgb(136, 136, 145)"
+          <button mat-raised-button style="color:white;background-color: royalblue"
             (click)=displayc(qbuuu.value,quantp)>Add</button>
             <button mat-raised-button style="color:black;background-color: white;border :1px solid;"
             (click)=cancel()>Cancel</button>
-        </div>
+        </form>
 
 
         <div style="margin: 45px" *ngIf=showm></div>
@@ -198,7 +198,7 @@
       
       
         <div fxLayout="column" fxLayoutAlign="start end">
-      <button mat-raised-button [disabled]="npform.invalid&&addform.invalid&&lpform.invalid" style="background-color:black;color: white;font-size: 150%" (click)=okclick() >Order</button>
+      <button mat-raised-button [disabled]="npform.invalid||addform.invalid||lpform.invalid" style="background-color:black;color: white;font-size: 150%" (click)=okclick() >Order</button>
     </div>
 
 

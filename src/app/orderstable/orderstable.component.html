@@ -5,15 +5,15 @@
 </mat-form-field>
 
 
-<button mat-button><mat-icon>reorder</mat-icon>Ordered</button>
-<button mat-button> <mat-icon>reorder</mat-icon>Delivered</button>
+<button mat-button ><mat-icon>reorder</mat-icon>Ordered</button>
+<button mat-button > <mat-icon>reorder</mat-icon>UnDelivered</button>
 
 
 <div fxLayout="column" fxLayoutAlign="start end">
 
 
   <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=prodel() *ngIf=showpro>Process for Delivery</button>
-  <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=procancel() *ngIf=showcancel ><mat-icon style="color: black">cancel</mat-icon>&nbsp;Cancel</button>
+  <button mat-button style="background-color:orangered;color: white;font-size: 120%" (click)=procancel() *ngIf=showcancel ><mat-icon style="color: black">cancel</mat-icon>&nbsp;Cancel Processing</button>
 
 </div>
 
@@ -35,7 +35,8 @@
         <mat-checkbox (click)="$event.stopPropagation()"
                       (change)="$event ? selection.toggle(row) : null"
                       [checked]="selection.isSelected(row)"
-                      [aria-label]="checkboxLabel(row)" *ngIf=showselect>
+                      [aria-label]="checkboxLabel(row)" *ngIf=showselect
+                      onchange="getdata()">
         </mat-checkbox>
       </td>
     </ng-container>

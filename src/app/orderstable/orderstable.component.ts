@@ -28,7 +28,7 @@ export class OrderstableComponent implements OnInit {
   selection = new SelectionModel<ordersitems>(true, []);
   dataSource = new MatTableDataSource();
 
-
+  rowdata:ordersitems[]=[];
     showselect:boolean=false;
     showpro:boolean=true;
      showcancel:boolean=false;
@@ -92,7 +92,14 @@ procancel(){
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
+    this.rowdata.push(row);
+    console.log(this.rowdata);
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.ordno + 1}`;
+
+  
+
+    
+
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
