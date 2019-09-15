@@ -8,7 +8,7 @@ import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/fires
 
  
 export interface ordersitems {
-
+ 
   pay?: number;
   ordno?: number;
   name?: string;
@@ -37,7 +37,7 @@ export class OrderstableComponent implements OnInit {
   details:Observable<ordersitems[]>;
 
   constructor( private afs :AngularFirestore) {
-    this.detailcollection=afs.collection<ordersitems>('orderitems');
+    this.detailcollection=afs.collection<ordersitems>('orderitems',ref=>{return ref.orderBy('ordno','desc')});
         this.details = this.detailcollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
             const data = a.payload.doc.data() as ordersitems;
@@ -91,9 +91,8 @@ procancel(){
   checkboxLabel(row?: ordersitems): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    this.rowdata.push(row);
-    console.log(this.rowdata);
+}
+
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.ordno + 1}`;
 
   
@@ -103,6 +102,14 @@ procancel(){
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  
+  getdata(row:ordersitems,$event){
+  
+  const data:ordersitems[]=[] 
+  data.push(row); 
+  console.log(row);  
   }
 }
 

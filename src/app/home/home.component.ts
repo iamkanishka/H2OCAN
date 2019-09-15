@@ -76,7 +76,7 @@ export class HomeComponent {
 
     this.ordersdetails = this.afs.doc<orderscount>('orderscounter/orderscount');
     this.ordersobs = this.ordersdetails.valueChanges();
-    this.orderitemscollection = this.afs.collection<ordersitems>('orderitems');
+    this.orderitemscollection = this.afs.collection<ordersitems>('orderitems',ref=>{return ref.orderBy('ordno','desc')});
     this.orderitemobs = this.orderitemscollection.valueChanges();
 
     this.npform = this.fb.group({

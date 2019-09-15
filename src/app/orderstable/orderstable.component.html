@@ -36,7 +36,7 @@
                       (change)="$event ? selection.toggle(row) : null"
                       [checked]="selection.isSelected(row)"
                       [aria-label]="checkboxLabel(row)" *ngIf=showselect
-                      onchange="getdata()">
+        (click)=getdata(row)>
         </mat-checkbox>
       </td>
     </ng-container>

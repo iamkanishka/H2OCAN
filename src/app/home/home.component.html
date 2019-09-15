@@ -157,10 +157,10 @@
         <form fxLayout="row" fxLayoutGap="10px" *ngIf=showform>
 
           <mat-form-field fxFlex="50">
-            <input #qbuuu matInput placeholder="Quantity for {{quantp}}">
+            <input #qbuuu matInput placeholder="Quantity for {{quantp}}" autocomplete="off">
           </mat-form-field>
           <button mat-raised-button style="color:white;background-color: royalblue"
-            (click)=displayc(qbuuu.value,quantp)>Add</button>
+            (click)=displayc(qbuuu.value,quantp) >Add</button>
             <button mat-raised-button style="color:black;background-color: white;border :1px solid;"
             (click)=cancel()>Cancel</button>
         </form>
