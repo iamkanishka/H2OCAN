@@ -262,21 +262,7 @@ export class HomeComponent {
         this.lpform.reset();
     
       }
-  // get name(){
-  //   return this.npform.get('name');
-  // }
-  // get phone(){
-  //   return this.npform.get('phone');
-  // }  
-  // get address(){
-  //   return this.addform.get('address');
-  // }  
-  // get landmark(){
-  //   return this.lpform.get('landmark');
-  // }  
-  // get pincode(){
-  //   return this.lpform.get('pincode');
-  // }  
+
 
 }
 

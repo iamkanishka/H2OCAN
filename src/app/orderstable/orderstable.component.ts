@@ -24,7 +24,7 @@ export interface ordersitems {
   styleUrls: ['./orderstable.component.scss']
 })
 export class OrderstableComponent implements OnInit {
-  displayedColumns = ['select','ordno','name', 'phone', 'address', 'landmark','pincode','pay'];
+  displayedColumns = ['select','ordno','name', 'phone', 'address', 'landmark','pincode','pay','check'];
   selection = new SelectionModel<ordersitems>(true, []);
   dataSource = new MatTableDataSource();
 

@@ -1,5 +1,7 @@
 # H2ocan
 
+This is a Simaple Crud Opertation base DropShip Application with Angular and Firebase and Intergrated with Circle CI for Continous Integration and Continous Delivery
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
 
 ## Development server
