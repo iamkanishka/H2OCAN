@@ -1,6 +1,6 @@
 # H2ocan
 
-This is a Simaple Crud Opertation base DropShip Application with Angular and Firebase and Intergrated with Circle CI for Continous Integration and Continous Delivery
+This is a Simaple Crud Opertation base WaterCan DropShip Application with Angular and Firebase and Intergrated with Circle CI for Continous Integration and Continous Delivery
 
 
 # Follow the Below Steps
@@ -11,7 +11,7 @@ Note:- Before Starting with this Project, Please make sure you have installed la
 Clone the project
 
 ```bash
-  git clone https://github.com/iamkanishka/Node-Express-Mongo-Mongoose-JWT.git
+  git clone https://github.com/iamkanishka/H2OCAN.git
 ```
 
 Go to the project directory
