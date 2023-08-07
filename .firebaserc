@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "h2ocan-95b28": {
+      "hosting": {
+        "H2OCAN": [
+          "h2ocan-95b28"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "h2ocan-95b28"
+  }
+}

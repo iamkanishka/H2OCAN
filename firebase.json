@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "H2OCAN",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

@@ -3,6 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  firebase: {
+    projectId: 'h2ocan-95b28',
+    appId: '1:1005276372558:web:29cd9a29dc962e17',
+    databaseURL: 'https://h2ocan-95b28.firebaseio.com',
+    storageBucket: 'h2ocan-95b28.appspot.com',
+    locationId: 'us-central',
+    apiKey: 'AIzaSyBt0oU9DKa55Z9BERUDlfh9oASRqdu5Qv4',
+    authDomain: 'h2ocan-95b28.firebaseapp.com',
+    messagingSenderId: '1005276372558',
+  },
   production: false,
    firebaseConfig : {
     apiKey: "AIzaSyBt0oU9DKa55Z9BERUDlfh9oASRqdu5Qv4",
