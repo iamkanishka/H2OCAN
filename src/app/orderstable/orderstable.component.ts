@@ -34,11 +34,11 @@ export class OrderstableComponent implements OnInit {
   showpro: boolean = true;
   showcancel: boolean = false;
 
-  private detailcollection: AngularFirestoreCollection<ordersitems>;
+  private detailcollection: Firestore<ordersitems>;
   details: Observable<ordersitems[]>;
 
-  constructor(private afs: AngularFirestore) {
-    this.detailcollection = afs.collection<ordersitems>('orderitems', ref => { return ref.orderBy('ordno', 'desc') });
+  constructor(private afs: Firestore) {
+    this.detailcollection = collection<ordersitems>('orderitems', ref => { return ref.orderBy('ordno', 'desc') });
     this.details = this.detailcollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as ordersitems;
